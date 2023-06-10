@@ -4,15 +4,49 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:diet_app/controller/auth.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String? errorMessage = "";
+  bool isLogin = true;
+
+  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerPassword = TextEditingController();
+
+  Future<void> loginWithEmailAndPassword() async {
+    try {
+      await Auth().loginWithEmailAndPassword(
+        email: _controllerEmail.text,
+        password: _controllerPassword.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        errorMessage = e.message;
+      });
+    }
+  }
+
+  Future<void> createUserWithEmailAndPassowrd() async {
+    try {
+      await Auth().createUserWithEmailAndPassowrd(
+        email: _controllerEmail.text,
+        password: _controllerPassword.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        errorMessage = e.message;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -60,6 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   child: TextField(
+                    controller: _controllerEmail,
                     decoration: InputDecoration(
                       hintText: "Email",
                       prefixIcon: Icon(
@@ -101,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   child: TextField(
+                    controller: _controllerPassword,
                     decoration: InputDecoration(
                       hintText: "Password",
                       prefixIcon: Icon(
@@ -147,15 +183,22 @@ class _LoginPageState extends State<LoginPage> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               image: DecorationImage(
-                  image: AssetImage("assets/btn_bg.png"), fit: BoxFit.cover),
+                image: AssetImage("assets/btn_bg.png"),
+                fit: BoxFit.cover,
+              ),
             ),
-            child: Center(
-              child: Text(
-                "Login",
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+            child: InkWell(
+              onTap: isLogin
+                  ? loginWithEmailAndPassword
+                  : createUserWithEmailAndPassowrd,
+              child: Center(
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
