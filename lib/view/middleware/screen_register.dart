@@ -1,7 +1,10 @@
+import 'package:diet_app/view/middleware/screen_login.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:diet_app/theme/t_theme.dart';
+import 'package:get/get.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -196,9 +199,12 @@ class RegisterPage extends StatelessWidget {
                 TextSpan(
                   text: " Login",
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () => Get.to(() => LoginPage()),
                 ),
               ],
             ),

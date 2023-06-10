@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "353100047549",
+    "project_id": "dietify-c2afd",
+    "storage_bucket": "dietify-c2afd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353100047549:android:da757a96d154b8126783d4",
+        "android_client_info": {
+          "package_name": "com.example.diet_adventure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353100047549-vrcedjclkbe22a4ifvj7u3moj3fks2c3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvxoIjKWZmutR78dW_ovyphpT_5eHpzPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353100047549-vrcedjclkbe22a4ifvj7u3moj3fks2c3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

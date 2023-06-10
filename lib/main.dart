@@ -1,14 +1,14 @@
 // import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'view/v_home.dart';
 import 'package:diet_app/view/middleware/screen_register.dart';
 import 'package:diet_app/view/middleware/screen_login.dart';
 import 'package:get/get.dart';
 
-void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-
-  // await Firebase.initializeApp();
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

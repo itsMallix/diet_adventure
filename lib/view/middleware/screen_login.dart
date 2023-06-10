@@ -1,6 +1,9 @@
+import 'package:diet_app/view/middleware/screen_register.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -58,6 +61,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
+                      hintText: "Email",
+                      prefixIcon: Icon(
+                        Icons.email,
+                        color: Colors.blue,
+                      ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(
@@ -94,6 +102,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
+                      hintText: "Password",
+                      prefixIcon: Icon(
+                        Icons.lock,
+                        color: Colors.blue,
+                      ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(color: Colors.white, width: 1.0),
@@ -152,20 +165,24 @@ class _LoginPageState extends State<LoginPage> {
           ),
           RichText(
             text: TextSpan(
-                text: "Don\'t have an account?",
-                style: TextStyle(
-                  color: Colors.grey[500],
-                  fontSize: 18,
-                ),
-                children: [
-                  TextSpan(
-                    text: " Register",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+              text: "Don\'t have an account?",
+              style: TextStyle(
+                color: Colors.grey[500],
+                fontSize: 18,
+              ),
+              children: [
+                TextSpan(
+                  text: " Register",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
-                ]),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () => Get.to(() => RegisterPage()),
+                ),
+              ],
+            ),
           ),
         ],
       ),
