@@ -6,6 +6,7 @@ import 'package:diet_app/view/middleware/screen_register.dart';
 import 'package:diet_app/view/middleware/screen_login.dart';
 import 'package:get/get.dart';
 import 'package:diet_app/view/middleware/screen_signup.dart';
+import 'package:diet_app/view/middleware/screen_signIn.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: SignUpPage(),
+      routes: {
+        "/==>login": (context) => SignInPage(),
+        "/==>signup": (context) => SignUpPage(),
+      },
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,13 +8,17 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  SignUpPage({super.key});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final fullNameController = TextEditingController();
+  final userNameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,6 +62,14 @@ class _SignUpPageState extends State<SignUpPage> {
                         height: 25,
                       ),
                       TextFormField(
+                        controller: fullNameController,
+                        validator: (fullname) {
+                          if (fullname == " ") {
+                            return "Fullname must be filled";
+                          } else {
+                            return null;
+                          }
+                        },
                         decoration: InputDecoration(
                             label: Text('Fullname'),
                             prefixIcon: Icon(
@@ -78,6 +91,12 @@ class _SignUpPageState extends State<SignUpPage> {
                         height: 15,
                       ),
                       TextFormField(
+                        controller: userNameController,
+                        validator: (username) {
+                          if (username == " ") {
+                            return "Username must be filled";
+                          }
+                        },
                         decoration: InputDecoration(
                             label: Text('Username'),
                             prefixIcon: Icon(
@@ -99,6 +118,12 @@ class _SignUpPageState extends State<SignUpPage> {
                         height: 15,
                       ),
                       TextFormField(
+                        controller: emailController,
+                        validator: (email) {
+                          if (email == " ") {
+                            return "Email must be filled";
+                          }
+                        },
                         decoration: InputDecoration(
                             label: Text('Email'),
                             prefixIcon: Icon(
@@ -120,6 +145,13 @@ class _SignUpPageState extends State<SignUpPage> {
                         height: 15,
                       ),
                       TextFormField(
+                        controller: passwordController,
+                        obscureText: true,
+                        validator: (password) {
+                          if (password == " ") {
+                            return "Password must be filled";
+                          }
+                        },
                         decoration: InputDecoration(
                             label: Text('Password'),
                             prefixIcon: Icon(
@@ -144,7 +176,21 @@ class _SignUpPageState extends State<SignUpPage> {
                         height: 50,
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            final snackBar = SnackBar(
+                              content: const Text(
+                                  "Your accoun successfully registered!"),
+                            );
+                            CollectionReference collRef = FirebaseFirestore
+                                .instance
+                                .collection('account');
+                            collRef.add({
+                              "full_name": fullNameController.text,
+                              "username": userNameController.text,
+                              "email": emailController.text,
+                              "password": passwordController.text,
+                            });
+                          },
                           style: ElevatedButton.styleFrom(
                               primary: Colors.grey.shade900),
                           child: const Text("SignUp"),
@@ -169,7 +215,25 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                         ),
-                      )
+                      ),
+                      Center(
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, "/==>login");
+                          },
+                          child: Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "Already have an account?",
+                                  style: TextStyle(color: Colors.grey.shade900),
+                                ),
+                                TextSpan(text: " Login")
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
