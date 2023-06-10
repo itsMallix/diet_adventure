@@ -96,7 +96,8 @@ class _BottomBarViewState extends State<BottomBarView>
                                   tabIconData: widget.modelList?[3],
                                   removeAllSelect: () {
                                     setRemoveAllSelection(widget.modelList?[3]);
-                                    widget.changeIndex!(3);
+                                    Navigator.pushNamed(context, "/==>profile");
+                                    // widget.changeIndex!(3);
                                   }),
                             ),
                           ],

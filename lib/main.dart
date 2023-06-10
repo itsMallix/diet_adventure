@@ -1,12 +1,12 @@
 // import 'package:firebase_core/firebase_core.dart';
+import 'package:diet_app/view/middleware/tes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'view/v_home.dart';
-import 'package:diet_app/view/middleware/screen_register.dart';
-import 'package:diet_app/view/middleware/screen_login.dart';
 import 'package:get/get.dart';
 import 'package:diet_app/view/middleware/screen_signup.dart';
 import 'package:diet_app/view/middleware/screen_signIn.dart';
+import 'package:diet_app/view/profile/profile.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +25,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/==>login": (context) => SignInPage(),
         "/==>signup": (context) => SignUpPage(),
+        "/==>home": (context) => DietAppHome(),
+        "/==>profile": (context) => ProfilePage(),
       },
     );
   }

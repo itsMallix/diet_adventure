@@ -18,7 +18,18 @@ class _SignInPageState extends State<SignInPage> {
   final passwordController = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
-  User? user;
+
+  Future<void> _SignIn() async {
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      Navigator.pushNamed(context, "/==>home");
+    } catch (e) {
+      print("login gagal $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +123,7 @@ class _SignInPageState extends State<SignInPage> {
                         height: 50,
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: _SignIn,
                           style: ElevatedButton.styleFrom(
                               primary: Colors.grey.shade900),
                           child: const Text("SignIn"),

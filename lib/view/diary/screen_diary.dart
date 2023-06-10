@@ -249,7 +249,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'My Diary',
+                                  'Dietify',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: DietApp.fontName,

@@ -92,11 +92,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       TextFormField(
                         controller: userNameController,
-                        validator: (username) {
-                          if (username == " ") {
-                            return "Username must be filled";
-                          }
-                        },
                         decoration: InputDecoration(
                             label: Text('Username'),
                             prefixIcon: Icon(
