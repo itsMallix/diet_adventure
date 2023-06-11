@@ -3,6 +3,7 @@ import 'package:diet_app/view/component/bottom_bar.dart';
 import 'package:diet_app/theme/t_theme.dart';
 import 'package:get/get.dart';
 import 'package:diet_app/view/profile/profile_update.dart';
+import 'package:diet_app/main.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -15,7 +16,9 @@ class ProfilePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
-          onPressed: () => Get.back(),
+          onPressed: () {
+            Navigator.pushNamed(context, "/==>home");
+          },
           icon: const Icon(
             Icons.chevron_left_rounded,
             color: DietApp.nearlyBlack,

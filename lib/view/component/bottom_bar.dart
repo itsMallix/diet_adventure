@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:diet_app/model/m_model.dart';
 import 'package:diet_app/main.dart';
 import 'package:diet_app/theme/t_theme.dart';
+import 'package:get/get.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView(
@@ -88,7 +89,8 @@ class _BottomBarViewState extends State<BottomBarView>
                                   tabIconData: widget.modelList?[2],
                                   removeAllSelect: () {
                                     setRemoveAllSelection(widget.modelList?[2]);
-                                    widget.changeIndex!(2);
+                                    // widget.changeIndex!(2);
+                                    Navigator.pushNamed(context, "/==>food");
                                   }),
                             ),
                             Expanded(
@@ -158,7 +160,9 @@ class _BottomBarViewState extends State<BottomBarView>
                           splashColor: Colors.white.withOpacity(0.1),
                           highlightColor: Colors.transparent,
                           focusColor: Colors.transparent,
-                          onTap: widget.addClick,
+                          onTap: () {
+                            Navigator.pushNamed(context, "/==>camera");
+                          },
                           child: Icon(
                             Icons.camera,
                             color: DietApp.white,
