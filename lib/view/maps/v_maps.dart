@@ -261,6 +261,46 @@
 //                       ),
 //                     ],
 //                   ),
+//                 ),Center(
+//                   child: Column(
+//                     children: [
+//                       Visibility(
+//                         visible: isLoading ? true : false,
+//                         child: const CircularProgressIndicator(
+//                           color: Colors.grey,
+//                         ),
+//                       ),
+//                       const SizedBox(height: 10),
+//                       isLoading
+//                           ? const Text("Sedang mencari lokasi ...")
+//                           : Text(
+//                               "Lokasi anda adalah \n: Lat : $_latitude \nLong : $_longitude"),
+//                       Text("Alamat : \n" + _address.toString(),
+//                           textAlign: TextAlign.center),
+//                       const SizedBox(height: 20),
+//                       Visibility(
+//                         visible: isLoading ? false : true,
+//                         child: ElevatedButton.icon(
+//                           style: ElevatedButton.styleFrom(
+//                             primary: Colors.lightBlue,
+//                           ),
+//                           onPressed: () {
+//                             setState(() {
+//                               isLoading = true;
+//                               _address = "";
+//                             });
+//                             getLocation();
+//                           },
+//                           icon: const Icon(Icons.my_location_outlined),
+//                           label: const Padding(
+//                             padding: EdgeInsets.all(15.0),
+//                             child: Text("Refres Lokasi",
+//                                 style: TextStyle(fontSize: 16)),
+//                           ),
+//                         ),
+//                       ),
+//                     ],
+//                   ),
 //                 ),
 //               ),
 //             ),

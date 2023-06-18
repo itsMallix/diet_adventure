@@ -1,6 +1,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:camera/camera.dart';
 import 'package:diet_app/model/m_food.dart';
+import 'package:diet_app/view/maps/mapsV2.dart';
 import 'package:diet_app/view/middleware/tes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ import 'package:intl/intl.dart';
 import 'package:diet_app/view/maps/v_maps.dart';
 import 'package:diet_app/view/v_food_detail.dart';
 import 'package:diet_app/view/maps/gmaps.dart';
+// import 'package:diet_app/view/maps/map_test.dart';
 
 List<CameraDescription> cameras = [];
 String sekarang = DateFormat('dd MMMM').format(DateTime.now());
@@ -46,6 +48,7 @@ class MyApp extends StatelessWidget {
         "/==>food": (context) => FoodPage(),
         "/==>camera": (context) => CameraScreen(),
         "/==>maps": (context) => GoogleMapsPage(),
+        // "/==>maps": (context) => MapsTest(),
         // "==>foodDetail": (context) => FoodDetailsPage(recipe: recipe),
       },
     );
