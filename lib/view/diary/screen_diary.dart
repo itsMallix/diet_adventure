@@ -6,6 +6,7 @@ import 'package:diet_app/view/diary/screen_water.dart';
 import 'package:diet_app/view/diary/screen_meals.dart';
 import 'package:flutter/material.dart';
 import 'package:diet_app/theme/t_theme.dart';
+import 'package:diet_app/main.dart';
 
 class MyDiaryScreen extends StatefulWidget {
   const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
@@ -293,7 +294,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                     ),
                                   ),
                                   Text(
-                                    '15 May',
+                                    sekarang,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontFamily: DietApp.fontName,

@@ -42,9 +42,23 @@ dependencies:
   animations: ^2.0.3
   firebase_core: ^2.13.1
   cloud_firestore: ^4.8.0
-  http: ^0.13.6
+  http: ^0.13.5
   firebase_auth: ^4.6.2
   camera: ^0.10.5+2
+  path_provider: ^2.0.15
+  permission_handler: ^10.3.0
+  video_player: ^2.6.1
+  trust_location: ^2.0.13
+  flutter_map: ^4.0.0
+  # flutter_map_marker_cluster: ^1.1.1
+  latlong2: ^0.8.2
+  location: ^4.4.0
+  cached_network_image: ^3.2.3
+  geocoding: ^2.1.0
+  syncfusion_flutter_maps: ^21.2.10
+  google_maps_flutter: ^2.3.0
+  geolocator: ^9.0.2
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:

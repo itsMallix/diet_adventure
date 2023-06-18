@@ -1,3 +1,4 @@
+import 'package:diet_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:diet_app/view/component/screen_workout.dart';
 import 'package:diet_app/view/component/screen_running.dart';
@@ -249,7 +250,7 @@ class _TrainingScreenState extends State<TrainingScreen>
                                     ),
                                   ),
                                   Text(
-                                    '15 May',
+                                    sekarang,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontFamily: DietApp.fontName,

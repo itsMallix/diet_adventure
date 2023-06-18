@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:diet_app/theme/t_theme.dart';
 import 'package:diet_app/view/v_food_card.dart';
 import 'package:diet_app/model/m_food.dart';
-import 'package:diet_app/model/m_api_food.dart  ';
+import 'package:diet_app/model/m_api_food.dart';
 import 'package:diet_app/main.dart';
+import 'package:diet_app/view/v_food_detail.dart';
 
 class FoodPage extends StatefulWidget {
   const FoodPage({Key? key}) : super(key: key);
@@ -22,13 +23,12 @@ class _FoodPageState extends State<FoodPage> {
     getRecipes();
   }
 
-  Future<List<Recipe>> getRecipes() async {
+  Future<void> getRecipes() async {
     _recipes = await RecipeApi.getRecipe();
     setState(() {
       _isLoading = false;
     });
     print(_recipes);
-    return _recipes;
   }
 
   @override
@@ -40,7 +40,8 @@ class _FoodPageState extends State<FoodPage> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.pushNamed(context, "/==>home");
+            Navigator.pop(
+                context); // Menggunakan Navigator.pop untuk kembali ke halaman sebelumnya
           },
           icon: const Icon(
             Icons.chevron_left_rounded,
@@ -57,23 +58,55 @@ class _FoodPageState extends State<FoodPage> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
-              itemCount: _recipes.length + 1,
+          : ListView.separated(
+              itemCount: _recipes.length +
+                  1, // Jumlah item + 1 untuk item khusus "My Recipe"
+              separatorBuilder: (context, index) =>
+                  Divider(), // Pembatas antar item
               itemBuilder: (context, index) {
                 if (index == 0) {
-                  return RecipeCard(
-                    title: "My Recipe",
-                    cookTime: "10 min",
-                    rating: "4.5",
-                    thumbnailUrl:
+                  Recipe recipe = Recipe(
+                    name: "My Recipe",
+                    images:
                         "https://images.everydayhealth.com/images/keto-diet-list-of-what-to-eat-and-7-day-sample-menu-alt-1440x810.jpg?sfvrsn=7a9869d4_4",
+                    rating: 4.5,
+                    totalTime: "10 min",
+                  );
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FoodDetailsPage(recipe: recipe),
+                        ),
+                      );
+                    },
+                    child: RecipeCard(
+                      title: recipe.name,
+                      cookTime: recipe.totalTime,
+                      rating: recipe.rating.toString(),
+                      thumbnailUrl: recipe.images,
+                    ),
                   );
                 } else {
-                  return RecipeCard(
-                    title: _recipes[index].name,
-                    cookTime: _recipes[index].totalTime,
-                    rating: _recipes[index].rating.toString(),
-                    thumbnailUrl: _recipes[index].images,
+                  // Kurangi 1 dari indeks untuk mengakses data di dalam _recipes
+                  Recipe recipe = _recipes[index - 1];
+
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FoodDetailsPage(recipe: recipe),
+                        ),
+                      );
+                    },
+                    child: RecipeCard(
+                      title: recipe.name,
+                      cookTime: recipe.totalTime,
+                      rating: recipe.rating.toString(),
+                      thumbnailUrl: recipe.images,
+                    ),
                   );
                 }
               },

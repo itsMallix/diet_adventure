@@ -1,7 +1,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:camera/camera.dart';
+import 'package:diet_app/model/m_food.dart';
 import 'package:diet_app/view/middleware/tes.dart';
-import 'package:diet_app/view/v_camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'view/v_home.dart';
@@ -10,10 +10,16 @@ import 'package:diet_app/view/middleware/screen_signup.dart';
 import 'package:diet_app/view/middleware/screen_signIn.dart';
 import 'package:diet_app/view/profile/profile.dart';
 import 'package:diet_app/view/v_food.dart';
+import 'package:diet_app/view/camera/screen_camera.dart';
+import 'package:intl/intl.dart';
+import 'package:diet_app/view/maps/v_maps.dart';
+import 'package:diet_app/view/v_food_detail.dart';
+import 'package:diet_app/view/maps/gmaps.dart';
+
+List<CameraDescription> cameras = [];
+String sekarang = DateFormat('dd MMMM').format(DateTime.now());
 
 Future main() async {
-  List<CameraDescription> cameras = [];
-
   try {
     WidgetsFlutterBinding.ensureInitialized();
     cameras = await availableCameras();
@@ -39,6 +45,8 @@ class MyApp extends StatelessWidget {
         "/==>profile": (context) => ProfilePage(),
         "/==>food": (context) => FoodPage(),
         "/==>camera": (context) => CameraScreen(),
+        "/==>maps": (context) => GoogleMapsPage(),
+        // "==>foodDetail": (context) => FoodDetailsPage(recipe: recipe),
       },
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:diet_app/theme/t_theme.dart';
+import 'package:diet_app/main.dart';
 
 class AreaListView extends StatefulWidget {
   const AreaListView(
@@ -19,7 +20,7 @@ class _AreaListViewState extends State<AreaListView>
     'assets/area1.png',
     'assets/area2.png',
     'assets/area3.png',
-    'assets/area1.png',
+    'assets/area4.png',
   ];
 
   @override
@@ -135,7 +136,9 @@ class AreaView extends StatelessWidget {
                   hoverColor: Colors.transparent,
                   borderRadius: const BorderRadius.all(Radius.circular(8.0)),
                   splashColor: DietApp.nearlyDarkBlue.withOpacity(0.2),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/==>maps");
+                  },
                   child: Column(
                     children: <Widget>[
                       Padding(
